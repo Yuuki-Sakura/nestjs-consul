@@ -1,0 +1,97 @@
+{
+  "name": "@adachi-sakura/nestjs-consul",
+  "version": "0.0.1",
+  "description": "Consul module for NestJS framework",
+  "author": {
+    "name": "结城桜",
+    "email": "i@zy.ci"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "license": "GPLv3",
+  "keywords": [
+    "consul",
+    "microservice",
+    "nestjs",
+    "nest",
+    "nodejs",
+    "node",
+    "typescript"
+  ],
+  "scripts": {
+    "prepare": "husky install",
+    "prebuild": "rimraf dist",
+    "build": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "lint": "eslint \"{lib,test}/**/*.ts\" --fix",
+    "publish:next": "npm publish --tag next",
+    "publish:local": "npm publish --registry http://localhost:4873/",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "15.0.0",
+    "@commitlint/config-conventional": "15.0.0",
+    "@nestjs/cli": "^8.0.0",
+    "@nestjs/common": "^8.0.0",
+    "@nestjs/core": "^8.0.0",
+    "@nestjs/testing": "^8.0.0",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^14.18.2",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "7.0.4",
+    "jest": "^27.0.6",
+    "lint-staged": "12.0.2",
+    "prettier": "^2.5.1",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.1.2",
+    "tsc-alias": "^1.5.0",
+    "typescript": "^4.5.4"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "8.x",
+    "@nestjs/core": "8.x"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://github.com/Yuuki-Sakura/nestjs-consul#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Yuuki-Sakura/nestjs-consul.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Yuuki-Sakura/nestjs-consul/issues"
+  }
+}
