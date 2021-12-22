@@ -25,6 +25,7 @@
     "prepare": "husky install",
     "prebuild": "rimraf dist",
     "build": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
+    "build:watch": "tsc -w -p tsconfig.build.json & tsc-alias -w -p tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint": "eslint \"{lib,test}/**/*.ts\" --fix",
     "publish:next": "npm publish --tag next",
@@ -40,16 +41,19 @@
     "@nestjs/common": "^8.0.0",
     "@nestjs/core": "^8.0.0",
     "@nestjs/testing": "^8.0.0",
+    "@types/consul": "^0.40.0",
     "@types/jest": "^27.0.3",
     "@types/node": "^14.18.2",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
+    "consul": "^0.40.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "7.0.4",
     "jest": "^27.0.6",
     "lint-staged": "12.0.2",
+    "nanoid": "^3.1.30",
     "prettier": "^2.5.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
@@ -59,7 +63,8 @@
   },
   "peerDependencies": {
     "@nestjs/common": "8.x",
-    "@nestjs/core": "8.x"
+    "@nestjs/core": "8.x",
+    "consul": "^0.40.0"
   },
   "jest": {
     "moduleFileExtensions": [
