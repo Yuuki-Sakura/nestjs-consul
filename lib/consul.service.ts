@@ -24,7 +24,7 @@ export class ConsulService implements OnApplicationBootstrap, OnModuleDestroy {
 
   private readonly logger = new Logger('ConsulModule');
 
-  createService(): Consul.Agent.Service.RegisterOptions {
+  private createService(): Consul.Agent.Service.RegisterOptions {
     const health = this.options.health;
     const { address, port } = this.options.service;
     const { script, interval, ttl, notes, status } = health;
@@ -42,7 +42,7 @@ export class ConsulService implements OnApplicationBootstrap, OnModuleDestroy {
     };
   }
 
-  async registerService() {
+  private async registerService() {
     const service = this.createService();
     this._service = service;
     const { maxRetry, retryInterval } = this.options.service;

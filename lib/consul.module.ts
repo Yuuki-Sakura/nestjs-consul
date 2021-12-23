@@ -12,6 +12,7 @@ import {
   ConsulModuleAsyncOptions,
   ConsulModuleOptions,
 } from '@/interfaces/consul-module-options.interface';
+import { ConsulServiceDiscovery } from '@/consul.service-discovery';
 import { DynamicModule, FactoryProvider, Inject, Module } from '@nestjs/common';
 import { DiscoveryModule } from '@nestjs/core';
 import * as Consul from 'consul';
@@ -46,8 +47,9 @@ export class ConsulModule {
         ConsulService,
         ConsulExplorer,
         ConsulMetadataAccessor,
+        ConsulServiceDiscovery,
       ],
-      exports: [consulProvider, ConsulService],
+      exports: [consulProvider, ConsulService, ConsulServiceDiscovery],
       controllers,
     };
   }
@@ -74,8 +76,9 @@ export class ConsulModule {
         ConsulService,
         ConsulExplorer,
         ConsulMetadataAccessor,
+        ConsulServiceDiscovery,
       ],
-      exports: [consulProvider, ConsulService],
+      exports: [consulProvider, ConsulService, ConsulServiceDiscovery],
       controllers,
     };
   }

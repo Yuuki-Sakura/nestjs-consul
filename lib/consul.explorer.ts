@@ -4,8 +4,13 @@ import {
 } from '@/consul-metadata.accessor';
 import { InjectConsul } from '@/decorators';
 import { setValue } from '@/utils/set-value';
-import { Injectable, Logger, OnApplicationShutdown, OnModuleInit } from "@nestjs/common";
-import { DiscoveryService, ModuleRef } from '@nestjs/core';
+import {
+  Injectable,
+  Logger,
+  OnApplicationShutdown,
+  OnModuleInit,
+} from '@nestjs/common';
+import { DiscoveryService } from '@nestjs/core';
 import { InstanceWrapper } from '@nestjs/core/injector/instance-wrapper';
 import Consul from 'consul';
 
@@ -48,9 +53,11 @@ export class ConsulExplorer implements OnModuleInit, OnApplicationShutdown {
   explore() {
     const providers = this.discoveryService.getProviders();
     providers.forEach((wrapper: InstanceWrapper) => {
-      const { metatype, instance } = wrapper;
-      if (!metatype) return;
-      const metadata = this.metadataAccessor.getKeyValueMetadata(metatype);
+      const { instance, metatype } = wrapper;
+      if (!instance) return;
+      const metadata = this.metadataAccessor.getKeyValueMetadata(
+        instance.constructor || metatype,
+      );
       if (metadata) {
         this.addKeyValues(instance, metadata);
       }
