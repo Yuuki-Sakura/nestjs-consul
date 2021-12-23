@@ -1,5 +1,5 @@
 import { CONSUL_OPTIONS } from '@/consul.constants';
-import { InjectConsul } from '@/consul.decorator';
+import { InjectConsul } from '@/decorators/consul.decorator';
 import { ConsulModuleOptions } from '@/interfaces/consul-module-options.interface';
 import { sleep } from '@/utils/sleep';
 import {
@@ -22,7 +22,7 @@ export class ConsulService implements OnApplicationBootstrap, OnModuleDestroy {
 
   private _service: Consul.Agent.Service.RegisterOptions;
 
-  private readonly logger = new Logger(ConsulService.name);
+  private readonly logger = new Logger('ConsulModule');
 
   createService(): Consul.Agent.Service.RegisterOptions {
     const health = this.options.health;
